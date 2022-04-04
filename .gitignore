@@ -1,4 +1,6 @@
 /.idea/
 /private/
-#/tmp/
+/tmp/
 /tmp/token.txt
+/**/.idea/
+/**/target/

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}">
+</head>
+<body>
+<div>
+    <h3>hello world</h3>
+    <!--会自动添加上下问路径 例如 springMVC-->
+    <a th:href="@{/success}">访问success页面</a><br>
+</div>
+<div>
+    <h3>测试@RequestMapping</h3>
+    <a th:href="@{/success(username='lucia',password=123)}">访问success页面</a><br>
+</div>
+
+<div>
+    <!--thymeleaf添加参数-->
+    <h3>测试获取请求参数:ParamController</h3>
+    <a th:href="@{/param/servletapi(name='lucia',age=20)}">使用servletapi获取参数</a><br>
+    <a th:href="@{/param/automatch(name='lucia',hobby='basketball',hobby='football')}">自动匹配获取参数</a><br>
+    <a th:href="@{/param/auto_not_match(username='lucia',hobby='basketball',hobby='football')}">自动匹配,参数名和形参名不一致，获取参数</a><br>
+    <a th:href="@{/param/getRequestHeader}">获取请求头</a><br>
+    <a th:href="@{/param/getCookie}">获取cookie</a><br>
+    <a th:href="@{/param/getPojo(name='lucia',age=18,sex='女',email='11@qq.com')}">请求参数会自动映射为pojo属性</a><br>
+    <form method="post" th:action="@{/param/postPojo}">
+        姓名:<input type="text" name="name"><br>
+        年龄:<input type="text" name="age"><br>
+        性别:<input type="text" name="sex"><br>
+        email:<input type="text" name="email"><br>
+        <input type="submit" value="请求参数会自动映射为pojo属性">
+    </form>
+</div>
+
+<div>
+    <h3>request域对象设置 ScopeController</h3>
+    <a th:href="@{/scope/servletapi}">通过serveltApi设置域对象,scope:request</a><br>
+    <a th:href="@{/scope/modelandview}">通过ModelAndView设置域对象,scope:request</a><br>
+    <a th:href="@{/scope/model}">通过Model设置域对象,scope:request</a><br>
+    <a th:href="@{/scope/map}">通过map设置域对象,scope:request</a><br>
+    <a th:href="@{/scope/modelmap}">通过ModelMap设置域对象,scope:request</a><br>
+
+    <h3>session域对象设置 ScopeController</h3>
+    <a th:href="@{/scope/seservletapi}">通过serveltApi设置域对象,scope:session</a><br>
+
+    <h3>application域对象设置 ScopeController</h3>
+    <a th:href="@{/scope/appservletapi}">通过serveltApi设置域对象,scope:application</a><br>
+</div>
+
+<div>
+    <h3>forward 和 redirect 只能是get请求, ViewTypeController,</h3>
+    <a th:href="@{/view/forward}">通过返回'forward:xx'实现转发</a><br>
+    <a th:href="@{/view/redirect}">通过返回'redirect:xx'实现转发</a><br>
+</div>
+
+<div>
+    <h3>通过 &lt;mvc:view-controller &gt; 实现请求映射</h3>
+    <a th:href="@{/home}">跳转到home页面</a><br>
+</div>
+
+<div>
+    <h3>实现请求put和delete提交，原来的请求方式必须为post</h3>
+    <form th:action="@{/putdel/}" method="post">
+        <input type="hidden" name="_method" value="PUT"><br>
+        姓名：<input type="text" name="name"/><br>
+        年龄：<input type="text" name="age"><br>
+        <input type="submit" value="模拟put提交"/>
+    </form>
+    <a id="del" th:href="@{/putdel/}">模拟delete提交</a><br>
+    <form hidden id="deleteForm" method="post">
+        <input type="hidden" name="_method" value="DELETE"><br>
+    </form>
+</div>
+</body>
+<script>
+    let del = document.getElementById("del");
+
+    del.onclick=function (event) {
+        event.preventDefault();
+        let deleteForm = document.getElementById("deleteForm");
+        deleteForm.action = event.target.href;
+        deleteForm.submit();
+    }
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}">
+</head>
+<body>
+<div>
+    <p id="result"></p>
+</div>
+<div>
+    <h3>请求体和响应体的转换 HttpMessageController</h3>
+    <form th:action="@{/httpmes/str}" method="post">
+        姓名:<input type="text" name="username"/><br>
+        年龄:<input type="text" name="age"><br>
+        <input type="submit" value="参数为一个String类型字符串">
+    </form>
+    <form th:action="@{/httpmes/requestentity}" method="post">
+        姓名:<input type="text" name="username"/><br>
+        年龄:<input type="text" name="age"><br>
+        <input type="submit" value="参数为RequestEntity">
+    </form>
+
+    <a th:href="@{/httpmes/servletaip}">通过servletApi响应浏览器</a><br>
+    <a th:href="@{/httpmes/respondbody}">通过@respondBody响应浏览器</a><br>
+    <a th:href="@{/httpmes/respondbodypojo}">通过@respondBody响应浏览器,返回对象</a><br>
+    <a id="postAjax" th:href="@{/httpmes/ajaxPost}">发送post ajax 请求</a><br>
+
+</div>
+
+<div>
+    <h3>下载和上传文件</h3>
+    <form th:action="@{/upload/filesystem}" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" value="选择文件"><br>
+        <input type="submit" value="将文件上传到服务器中文件系统中">
+    </form>
+    <a th:href="@{/download/filesystem/美女.jpeg}">从服务器文件系统中下载</a><br>
+    <form th:action="@{/upload/internal}" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" value="选择文件"><br>
+        <input type="submit" value="将文件上传到服务器中。 文件有可能存在数据库，缓存等其他位置">
+    </form>
+    <a th:href="@{/download/internal/美女-copy.jpeg}">
+        从服务器中下载,文件有可能存在数据库，缓存等其他位置</a><br>
+
+</div>
+
+<div>
+    <h3>测试拦截器，拦截器在handler之前、之后、render之后执行对应的方法</h3>
+
+    <a th:href="@{/interceptor/hello}">简单测试，控制台先输出pre信息，
+        然后是handler信息，然后是post信息，
+        最后是afterComplement信息</a>
+</div>
+<div>
+    <h3>异常处理,基于配置 SimpleMappingExceptionResolver</h3>
+    <a th:href="@{/ari/handarithmetic}">指定异常跳转页面</a>
+</div>
+<div>
+    <h3>异常处理,基于注解 MyExceptionHandler</h3>
+    <a th:href="@{/ari/handnullpointexception}">指定异常跳转页面</a>
+</div>
+<script th:src="@{/static/js/jquery-3.6.0.js}"></script>
+<script th:src="@{/static/js/index.js}"></script>
+</body>
+</html>

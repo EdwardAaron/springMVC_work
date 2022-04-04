@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/style.css}">
+</head>
+<body>
+<div>
+    <h3>配置view-controller addViewControllers</h3>
+    <a th:href="@{/hello}">跳转到hello.html 页面</a>
+</div>
+
+<div>
+    <h3>同一处理异常 configureHandlerExceptionResolvers</h3>
+    <a th:href="@{/arithmeticexception}">ArithmeticException异常</a>
+</div>
+
+<div>
+    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" value="选择文件"><br>
+        <input type="submit" value="将文件上传到服务器中。 文件有可能存在数据库，缓存等其他位置">
+    </form>
+    <a th:href="@{/download/美女-copy.jpeg}">
+        从服务器中下载,文件有可能存在数据库，缓存等其他位置</a><br>
+</div>
+</body>
+</html>
