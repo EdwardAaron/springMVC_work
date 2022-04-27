@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Appenders>
+        <Console name="Out" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="java.sql" level="DEBUG" />
+        <Logger name="org.apache.ibatis" level="INFO"/>
+        <Root level="DEBUG">
+            <AppenderRef ref="Out"/>
+        </Root>
+    </Loggers>
+</Configuration>
