@@ -14,33 +14,34 @@
         <module>helloWorld_anno_rest_thymeleaf</module>
         <module>ssh_grud_xmlConf_jsp</module>
         <module>ssh_grud_xmlConf_jsp_jquery</module>
+        <module>ssh_grud_javaConf_jsp_jquery</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
+        <c3p0.version>0.9.5.5</c3p0.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+        <javax.servlet-api.version>3.0.1</javax.servlet-api.version>
+        <jackson-databind.version>2.12.1</jackson-databind.version>
+        <jstl-api.version>1.2</jstl-api.version>
+        <jstl.version>1.2</jstl.version>
+        <junit.version>4.13.2</junit.version>
+        <log4j.version>2.17.2</log4j.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
+        <lombok.verson>1.18.22</lombok.verson>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <mybatis-generator-core.version>1.3.5</mybatis-generator-core.version>
+        <mybatis-spring.version>2.0.7</mybatis-spring.version>
+        <mybatis.version>3.5.7</mybatis.version>
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
         <spring-web.version>5.3.1</spring-web.version>
         <spring-test.version>5.3.1</spring-test.version>
         <spring-jdbc.version>5.3.1</spring-jdbc.version>
         <spring-aspects.version>5.3.1</spring-aspects.version>
         <thymeleaf-spring5.version>3.0.12.RELEASE</thymeleaf-spring5.version>
-        <jackson-databind.version>2.12.1</jackson-databind.version>
-        <commons-fileupload.version>1.3.1</commons-fileupload.version>
-        <mybatis.version>3.5.7</mybatis.version>
-        <mybatis-spring.version>2.0.7</mybatis-spring.version>
-        <c3p0.version>0.9.5.5</c3p0.version>
-        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
-        <jstl-api.version>1.2</jstl-api.version>
-        <javax.servlet-api.version>3.0.1</javax.servlet-api.version>
-        <logback-classic.version>1.2.3</logback-classic.version>
-        <lombok.verson>1.18.22</lombok.verson>
-        <junit.version>4.13.2</junit.version>
-        <mybatis-generator-core.version>1.3.5</mybatis-generator-core.version>
-        <pagehelper.version>5.2.0</pagehelper.version>
-        <jstl.version>1.2</jstl.version>
-        <log4j.version>2.17.2</log4j.version>
-        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
     </properties>
     <dependencies>
         <dependency>
@@ -54,14 +55,11 @@
             <version>${spring-test.version}</version>
             <scope>test</scope>
         </dependency>
-
-
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.verson}</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -135,7 +133,6 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.mybatis.generator</groupId>
